@@ -1,0 +1,12 @@
+.row{
+    border-style: dashed;
+}
+.container,.container-fluid{
+    border: black;
+}
+.col{
+    border-style: dotted;
+}
+.font{
+    font-size: smaller;
+}
