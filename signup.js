@@ -6,7 +6,7 @@ function validationForm(){
     
     emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
     passRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#^()])[A-Za-z\d@#$!%*?&^()]{8,}$/
-    
+
     }
     if(email.value == "" || !emailRegex.test(email.value)){
         alert("Please enter your email");
@@ -32,16 +32,22 @@ function validationForm(){
       else {
         pass.style.border = "2px solid green";
       }
-      if (select.selectedIndex < 1) {
-        // alert("Please enter your course.");
-        select.focus();
-        select.style.border = "2px solid red";
-        return false;
+      const checkForSelection = () => {
+        if (document.getElementById("select").selectedIndex === 0) {
+          alert("Please select your age bracket");
+          return false;
+        }
+        const validateRadios = () => {
+            const radios = document.getElementsByName("flexRadioDefault");
+            for (const r of radios) {
+              if (r.checked) {
+                return true;
+              }
+            }
+            alert("Please indicate your marital status");
+            return false;
+          }
       }
-      else {
-        select.style.border = "2px solid green";
-      }
-      return true;
     
 
     
