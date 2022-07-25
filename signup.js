@@ -1,54 +1,49 @@
 function validationForm(){
-    let email = document.forms["SignupForm"]["InputEmail"];
-    let pass = document.forms["SignupForm"]["Password"];
-    let checkbox = document.forms["SignupForm"]["Check"];
-    let select = document.forms["SignupForm"]["Select"];
-    
-    emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
-    passRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#^()])[A-Za-z\d@#$!%*?&^()]{8,}$/
+  let usermail = document.forms["SignupForm"]["Email"];
+  let password = document.forms["SignupForm"]["Password"];
+  //let checkbox= document.forms["SignupForm"]["checkbox"]
+ 
+  usermailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+  passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#^()])[A-Za-z\d@#$!%*?&^()]{8,}$/
+  
+  alphaNumeric = /^[A-Za-z0-9]+$/
 
-    }
-    if(email.value == "" || !emailRegex.test(email.value)){
-        alert("Please enter your email");
-        email.style.border = "2px solid red";
-        email.innerHTML = "Please enter your email"
-        email.focus();
-        // email.focus();
-    }
-    if(email.value.indexOf("@", 0)<0 || email.value.indexOf ("."),0 <0 ){
-      alert("Please enter a valid email address");
-        email.focus();
-       return false;
-    }
-    else {
-        email.style.border = "2px solid green";
-    }
-    if (pass.value == "" || !passRegex.test(pass.value)) {
-         alert("Please enter your password");
-        pass.style.border = "2px solid red";
-        pass.focus();
-        return false;
-      }
-      else {
-        pass.style.border = "2px solid green";
-      }
-      const checkForSelection = () => {
-        if (document.getElementById("select").selectedIndex === 0) {
-          alert("Please select your age bracket");
-          return false;
-        }
-        const validateRadios = () => {
-            const radios = document.getElementsByName("flexRadioDefault");
-            for (const r of radios) {
-              if (r.checked) {
-                return true;
-              }
-            }
-            alert("Please indicate your marital status");
-            return false;
-          }
-      }
-    
+  if(usermail.value == ""|| !usermailRegex.test(usermail.value) ){
+      //alert("Please enter your email");
+      usermail.style.border = "2px solid red";
+      alert("Please enter email")
+      //email.focus();
+      return false
+   } else{ usermail.style.border = "2px solid green";
+      
+  }
+  
+  if(password.value == "" || !passwordRegex.test(password.value)){
+      alert("Please enter password! It must contain a number, a special character and be atleast 8 characters");
+      password.style.border = "2px solid red";
+      //password.focus();
+      return false;
+  }
+  else { password.style.border = "2px solid green";
 
-    
+  }
 
+  let checkbox = document.getElementById("checkbox");
+  
+  if(!checkbox.checked){
+   alert("Please agree to our terms and conditions");
+   
+   }
+  else{ checkbox.checked = "Please proceed"; // not working
+ 
+   }
+  let select = document.getElementById("select");
+
+  if(select == ""){
+    alert("Please indicate your age");
+     return false;
+   }
+  else{ return true;
+
+   }
+}
